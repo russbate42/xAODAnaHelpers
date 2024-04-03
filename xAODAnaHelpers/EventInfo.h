@@ -48,6 +48,8 @@ namespace xAH {
     uint32_t m_SCTFlags;
     bool     m_eventClean_LooseBad;
     bool     m_eventClean_TightBad;
+    bool     m_eventClean_LooseBad_EMTopo;
+    bool     m_eventClean_TightBad_EMTopo;
     int      m_mcEventNumber;
     int      m_mcChannelNumber;
     float    m_mcEventWeight;

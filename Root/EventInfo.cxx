@@ -238,6 +238,8 @@ void EventInfo::clear()
   m_SCTFlags = 0;
   m_eventClean_LooseBad = false;
   m_eventClean_TightBad = false;
+  m_eventClean_LooseBad_EMTopo = false;
+  m_eventClean_TightBad_EMTopo = false;
   m_mcEventWeight = 1.;
   m_DistEmptyBCID = -999;
   m_DistLastUnpairedBCID = -999;
@@ -339,6 +341,13 @@ void EventInfo::FillEvent( const xAOD::EventInfo* eventInfo, xAOD::TEvent* event
     if ( acc_DFCommonJets_eventClean_TightBad.isAvailable( *eventInfo ))
       m_eventClean_TightBad = acc_DFCommonJets_eventClean_TightBad( *eventInfo );
 
+    // Add legacy EMTopo functionality
+    static SG::AuxElement::ConstAccessor< char > acc_DFCommonJets_eventClean_LooseBad_EMTopo("DFCommonJets_eventClean_LooseBad_EMTopo");
+    if ( acc_DFCommonJets_eventClean_LooseBad_EMTopo.isAvailable( *eventInfo ))
+      m_eventClean_LooseBad_EMTopo = acc_DFCommonJets_eventClean_LooseBad_EMTopo( *eventInfo );
+    static SG::AuxElement::ConstAccessor< char > acc_DFCommonJets_eventClean_TightBad_EMTopo("DFCommonJets_eventClean_TightBad_EMTopo");
+    if ( acc_DFCommonJets_eventClean_TightBad_EMTopo.isAvailable( *eventInfo ))
+      m_eventClean_TightBad_EMTopo = acc_DFCommonJets_eventClean_TightBad_EMTopo( *eventInfo );
   }
 
   if ( m_infoSwitch.m_pileup ) {
